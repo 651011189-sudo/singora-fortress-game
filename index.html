@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตามรอยป้อมเมืองสิงหนคร</title>
+
+    <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Tahoma, sans-serif;
+            background: #f3efe6;
+        }
+
+        header {
+            background: #263b2d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        #map {
+            height: 75vh;
+            width: 100%;
+        }
+
+        .info {
+            text-align: center;
+            padding: 20px;
+        }
+
+        button {
+            background: #a87938;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>ตามรอยป้อมเมืองสิงหนคร</h1>
+    <p>แผนที่ประวัติศาสตร์และบอร์ดเกมเพื่อการเรียนรู้</p>
+</header>
+
+<div id="map"></div>
+
+<div class="info">
+    <h2>สำรวจประวัติศาสตร์เมืองสงขนาเก่า</h2>
+    <p>เรียนรู้ตำแหน่งป้อมปราการและเรื่องราวในอดีต</p>
+    <button onclick="startGame()">เริ่มเล่นบอร์ดเกม</button>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+    // สร้างแผนที่
+    var map = L.map('map').setView([7.2192, 100.5568], 14);
+
+    // ภาพดาวเทียม
+    L.tileLayer(
+        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        {
+            attribution: 'Tiles © Esri'
+        }
+    ).addTo(map);
+
+    // ป้อมหมายเลข 9 (พิกัดอ้างอิง)
+    var fort9 = L.marker([7.21923658, 100.55681261])
+        .addTo(map);
+
+    fort9.bindPopup(
+        '<b>ป้อมหมายเลข 9</b><br>ป้อมเมืองสงขนาเก่า'
+    );
+
+    // ปุ่มเริ่มเกม
+    function startGame() {
+        alert('ยินดีต้อนรับสู่เกมตามรอยป้อมเมืองสิงหนคร!');
+    }
+</script>
+
+</body>
+</html>
