@@ -290,6 +290,7 @@ function checkFort9Distance() {
 
         status.innerText =
             'สถานะ: พบป้อมหมายเลข 9!';
+        document.getElementById('readHistory').disabled = false;
 
         if (questStarted && !questCompleted) {
             completeButton.disabled = false;
@@ -300,7 +301,7 @@ function checkFort9Distance() {
         status.innerText =
             'สถานะ: ยังไม่ถึงป้อมหมายเลข 9 (' +
             Math.round(distance) + ' เมตร)';
-
+document.getElementById('readHistory').disabled = true;
         completeButton.disabled = true;
     }
 }
@@ -348,6 +349,63 @@ document.getElementById('completeQuest')
 
 checkFort9Distance();
 </script>
+<div id="fort9HistoryPanel" style="
+    background: white;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    max-width: 350px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+">
 
+    <h3>🏰 ป้อมหมายเลข 9</h3>
+
+    <button id="readHistory" disabled>
+        อ่านประวัติ
+    </button>
+
+    <div id="fort9History" style="display:none;">
+
+        <h4>ประวัติศาสตร์ป้อมหัวเขาแดง</h4>
+
+        <p>
+            เมืองสงขลาเก่าฝั่งหัวเขาแดงเป็นเมืองท่าสำคัญ
+            ในอดีตมีการสร้างป้อมปราการเพื่อป้องกันเมือง
+            และรักษาความมั่นคงของเมืองท่า
+            ป้อมปราการเหล่านี้สะท้อนถึงความสำคัญ
+            ทางยุทธศาสตร์และประวัติศาสตร์ของพื้นที่
+        </p>
+
+        <p>
+            พิกัดอ้างอิง:
+            7.21923658, 100.55681261
+        </p>
+
+    </div>
+
+</div>
+    <script>
+var historyRead = false;
+
+document.getElementById('readHistory')
+.addEventListener('click', function() {
+
+    if (historyRead) return;
+
+    document.getElementById('fort9History')
+    .style.display = 'block';
+
+    historyRead = true;
+
+    questScore += 50;
+
+    document.getElementById('questScore')
+    .innerText = questScore;
+
+    this.innerText = 'อ่านประวัติแล้ว +50 คะแนน';
+    this.disabled = true;
+
+});
+</script>
 </body>
 </html>
