@@ -45,10 +45,32 @@
             cursor: pointer;
             font-size: 18px;
         }
+        #startMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #263b32;
+    color: white;
+    text-align: center;
+}
+
+#map,
+header,
+.info {
+    display: none;
+}
     </style>
 </head>
 
 <body>
+    <div id="startMenu">
+    <h1>ตามรอยป้อมเมืองสิงหนคร</h1>
+    <p>ย้อนรอยประวัติศาสตร์ สำรวจป้อมปราการ</p>
+
+    <button onclick="startGame()">เริ่มเกม</button>
+</div>
 
 <header>
     <h1>ตามรอยป้อมเมืองสิงหนคร</h1>
@@ -457,6 +479,18 @@ document.getElementById('readHistory')
     this.disabled = true;
 
 });
+        function startGame() {
+
+    document.getElementById('startMenu').style.display = 'none';
+
+    document.querySelector('header').style.display = 'block';
+
+    document.getElementById('map').style.display = 'block';
+
+    document.querySelector('.info').style.display = 'block';
+
+    map.invalidateSize();
+}
 </script>
 </body>
 </html>
