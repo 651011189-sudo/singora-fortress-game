@@ -186,6 +186,116 @@ createFortMarker(8, 7.2202, 100.5552);
         alert('ยินดีต้อนรับสู่เกมตามรอยป้อมเมืองสิงหนคร!');
     }
 </script>
+<!-- Quest System -->
+<style>
+.quest-panel {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 260px;
+    background: #1f2937;
+    color: white;
+    padding: 18px;
+    border: 2px solid #d4a44c;
+    border-radius: 12px;
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
 
+.quest-panel h3 {
+    color: #f5c76e;
+    margin-top: 0;
+}
+
+.quest-panel button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 6px;
+    background: #d4a44c;
+    color: #1f2937;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.quest-panel button:disabled {
+    background: #777;
+    color: white;
+    cursor: not-allowed;
+}
+
+.quest-panel p {
+    line-height: 1.6;
+}
+</style>
+
+<div class="quest-panel">
+    <h3>🧭 ภารกิจนักสำรวจ</h3>
+
+    <p><b>ภารกิจที่ 1</b></p>
+    <p>สำรวจป้อมหมายเลข 9</p>
+
+    <p>
+        ศึกษาความสำคัญทางประวัติศาสตร์
+        ของป้อมเมืองเก่าสงขลา
+    </p>
+
+    <p id="questStatus">
+        สถานะ: ยังไม่ได้รับภารกิจ
+    </p>
+
+    <p>คะแนน: <span id="questScore">0</span></p>
+
+    <button id="startQuest">
+        รับภารกิจ
+    </button>
+
+    <button id="completeQuest" disabled>
+        สำเร็จภารกิจ
+    </button>
+</div>
+
+<script>
+var questStarted = false;
+var questCompleted = false;
+var questScore = 0;
+
+document.getElementById('startQuest')
+.addEventListener('click', function() {
+
+    if (questStarted) return;
+
+    questStarted = true;
+
+    document.getElementById('questStatus')
+    .innerText = 'สถานะ: กำลังสำรวจป้อมหมายเลข 9';
+
+    this.innerText = 'รับภารกิจแล้ว';
+    this.disabled = true;
+
+    document.getElementById('completeQuest')
+    .disabled = false;
+});
+
+document.getElementById('completeQuest')
+.addEventListener('click', function() {
+
+    if (!questStarted || questCompleted) return;
+
+    questCompleted = true;
+    questScore += 100;
+
+    document.getElementById('questStatus')
+    .innerText = 'สถานะ: สำเร็จภารกิจ!';
+
+    document.getElementById('questScore')
+    .innerText = questScore;
+
+    this.innerText = 'ภารกิจสำเร็จ!';
+    this.disabled = true;
+});
+</script>
 </body>
 </html>
