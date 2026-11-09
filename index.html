@@ -165,11 +165,51 @@ function createFortMarker(number, lat, lng) {
         })
     }).addTo(map);
 
+    var fortInfo = '';
+
+if (number === 1) {
+    fortInfo = `
+        <hr>
+        <h4>ข้อมูลป้อมหมายเลข 1</h4>
+        <p><b>สถานะ:</b> อยู่ระหว่างการศึกษาข้อมูล</p>
+        <p>ป้อมแห่งนี้เป็นส่วนหนึ่งของโครงการ
+        สำรวจป้อมปราการในพื้นที่อำเภอสิงหนคร</p>
+        <p>ข้อมูลประวัติศาสตร์จะเพิ่มเติม
+        หลังจากการตรวจสอบข้อมูล</p>
+    `;
+} else {
+    fortInfo = `
+        <hr>
+        <p>ป้อมแห่งนี้อยู่ระหว่างการรวบรวมข้อมูล</p>
+    `;
+
     marker.bindPopup(`
-        <h3>ป้อมหมายเลข ${number}</h3>
-        <p>ตำแหน่งทดลองสำหรับแผนที่ป้อมเมืองสงขลา</p>
-        <p>พิกัดเบื้องต้น ยังไม่ได้ตรวจสอบภาคสนาม</p>
-    `);
+    <div style="width:250px;font-family:Arial,sans-serif;">
+        <h3 style="color:#8B0000;text-align:center;">
+            🏰 ป้อมหมายเลข ${number}
+        </h3>
+
+        <p><b>พิกัดอ้างอิง:</b></p>
+        <p>${lat.toFixed(6)}, ${lng.toFixed(6)}</p>
+
+        ${fortInfo}
+    </div>
+`);
+    }
+
+marker.bindPopup(`
+    <div style="width:250px;font-family:Arial,sans-serif;">
+        <h3 style="color:#8B0000;text-align:center;">
+            🏰 ป้อมหมายเลข ${number}
+        </h3>
+
+        <p><b>พิกัดอ้างอิง:</b></p>
+
+        <p>${lat.toFixed(6)}, ${lng.toFixed(6)}</p>
+
+        ${fortInfo}
+    </div>
+`);
 }
 
 // หมุดป้อมหมายเลข 1-8 (ตำแหน่งทดลอง)
