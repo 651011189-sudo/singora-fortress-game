@@ -98,7 +98,9 @@ var player = L.marker([playerLat, playerLng], {
     if (e.key.startsWith('Arrow')) {
         e.preventDefault();
         player.setLatLng([playerLat, playerLng]);
-        map.panTo([playerLat, playerLng]);
+        checkFort9Distance();
+map.panTo([playerLat, playerLng]);
+       
     }
 });
 
@@ -258,9 +260,50 @@ createFortMarker(8, 7.2202, 100.5552);
 </div>
 
 <script>
+
 var questStarted = false;
 var questCompleted = false;
 var questScore = 0;
+
+var fort9Lat = 7.21923658;
+var fort9Lng = 100.55681261;
+var questDistance = 50;
+
+function checkFort9Distance() {
+
+    var playerPosition = player.getLatLng();
+
+    var fort9Position = L.latLng(
+        fort9Lat,
+        fort9Lng
+    );
+
+    var distance = map.distance(
+        playerPosition,
+        fort9Position
+    );
+
+    var status = document.getElementById('questStatus');
+    var completeButton = document.getElementById('completeQuest');
+
+    if (distance <= questDistance) {
+
+        status.innerText =
+            'สถานะ: พบป้อมหมายเลข 9!';
+
+        if (questStarted && !questCompleted) {
+            completeButton.disabled = false;
+        }
+
+    } else {
+
+        status.innerText =
+            'สถานะ: ยังไม่ถึงป้อมหมายเลข 9 (' +
+            Math.round(distance) + ' เมตร)';
+
+        completeButton.disabled = true;
+    }
+}
 
 document.getElementById('startQuest')
 .addEventListener('click', function() {
@@ -269,20 +312,26 @@ document.getElementById('startQuest')
 
     questStarted = true;
 
-    document.getElementById('questStatus')
-    .innerText = 'สถานะ: กำลังสำรวจป้อมหมายเลข 9';
-
     this.innerText = 'รับภารกิจแล้ว';
     this.disabled = true;
 
-    document.getElementById('completeQuest')
-    .disabled = false;
+    checkFort9Distance();
 });
 
 document.getElementById('completeQuest')
 .addEventListener('click', function() {
 
     if (!questStarted || questCompleted) return;
+
+    var distance = map.distance(
+        player.getLatLng(),
+        L.latLng(fort9Lat, fort9Lng)
+    );
+
+    if (distance > questDistance) {
+        alert('กรุณาเดินทางไปยังป้อมหมายเลข 9 ก่อนครับ');
+        return;
+    }
 
     questCompleted = true;
     questScore += 100;
@@ -296,6 +345,9 @@ document.getElementById('completeQuest')
     this.innerText = 'ภารกิจสำเร็จ!';
     this.disabled = true;
 });
+
+checkFort9Distance();
 </script>
+
 </body>
 </html>
