@@ -285,13 +285,16 @@ function checkFort9Distance() {
 
     var status = document.getElementById('questStatus');
     var completeButton = document.getElementById('completeQuest');
+    var historyPanel = document.getElementById('fort9HistoryPanel');
 
     if (distance <= questDistance) {
 
         status.innerText =
             'สถานะ: พบป้อมหมายเลข 9!';
         document.getElementById('readHistory').disabled = false;
-
+if (historyPanel) {
+    historyPanel.style.display = 'block';
+}
         if (questStarted && !questCompleted) {
             completeButton.disabled = false;
         }
@@ -303,6 +306,9 @@ function checkFort9Distance() {
             Math.round(distance) + ' เมตร)';
 document.getElementById('readHistory').disabled = true;
         completeButton.disabled = true;
+        if (historyPanel) {
+    historyPanel.style.display = 'none';
+}
     }
 }
 
