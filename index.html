@@ -45,16 +45,44 @@
             cursor: pointer;
             font-size: 18px;
         }
-        #startMenu {
+       
+#startMenu {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: #263b32;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 30px;
+    background: linear-gradient(135deg, #172d26, #355545);
     color: white;
     text-align: center;
 }
+
+#startMenu h1 {
+    color: #e5b653;
+    font-size: 36px;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 5px black;
+}
+
+#startMenu p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+#startMenu button {
+    background: #d6a443;
+    color: #263326;
+    padding: 15px 45px;
+    border: 2px solid #f0ca78;
+    border-radius: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 
 #map,
 header,
