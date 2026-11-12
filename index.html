@@ -293,6 +293,9 @@ createFortMarker(8, 7.2202, 100.5552);
 .quest-panel p {
     line-height: 1.6;
 }
+    .quest-panel {
+    display: none;
+}
 </style>
 
 <div class="quest-panel">
@@ -488,7 +491,7 @@ document.getElementById('readHistory')
     document.getElementById('map').style.display = 'block';
 
     document.querySelector('.info').style.display = 'block';
-
+document.querySelector('.quest-panel').style.display = 'block';
     map.invalidateSize();
 }
 </script>
