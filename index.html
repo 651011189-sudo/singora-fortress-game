@@ -113,19 +113,26 @@ header,
 <div id="howToPlay" style="
     display: none;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 85%;
-    max-width: 450px;
-    background: #263b32;
-    color: white;
-    padding: 25px;
-    border: 2px solid #d6a443;
-    border-radius: 15px;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
     z-index: 10000;
-    text-align: left;
+    display: none;
 ">
+    <div style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 85%;
+        max-width: 450px;
+        background: linear-gradient(145deg, #263b32, #14251e);
+        color: white;
+        padding: 25px;
+        border: 2px solid #d6a443;
+        border-radius: 15px;
+        box-shadow: 0 0 25px rgba(214, 164, 67, 0.4);
+        text-align: left;
+    ">
     <h2 style="color: #d6a443; text-align: center;">
         วิธีการเล่น
     </h2>
@@ -139,7 +146,7 @@ header,
         กลับหน้าเมนู
     </button>
 </div>
-
+</div>
 <header>
     <h1>ตามรอยป้อมเมืองสิงหนคร</h1>
     <p>แผนที่ประวัติศาสตร์และบอร์ดเกมเพื่อการเรียนรู้</p>
