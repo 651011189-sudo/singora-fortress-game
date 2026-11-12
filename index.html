@@ -107,6 +107,37 @@ header,
     <p>ย้อนรอยประวัติศาสตร์ สำรวจป้อมปราการ</p>
 
     <button onclick="startGame()">เริ่มเกม</button>
+        <button onclick="showHowToPlay()">วิธีการเล่น</button>
+</div>
+
+<div id="howToPlay" style="
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    max-width: 450px;
+    background: #263b32;
+    color: white;
+    padding: 25px;
+    border: 2px solid #d6a443;
+    border-radius: 15px;
+    z-index: 10000;
+    text-align: left;
+">
+    <h2 style="color: #d6a443; text-align: center;">
+        วิธีการเล่น
+    </h2>
+
+    <p>🎮 1. ใช้ปุ่มลูกศรบนคีย์บอร์ดเพื่อบังคับตัวละคร</p>
+    <p>🏰 2. เดินทางไปยังตำแหน่งป้อมปราการบนแผนที่</p>
+    <p>📜 3. เข้าใกล้ป้อมเพื่อรับภารกิจและอ่านประวัติศาสตร์</p>
+    <p>⭐ 4. ทำภารกิจเพื่อสะสมคะแนน</p>
+
+    <button onclick="closeHowToPlay()">
+        กลับหน้าเมนู
+    </button>
 </div>
 
 <header>
@@ -531,6 +562,13 @@ document.getElementById('readHistory')
 document.querySelector('.quest-panel').style.display = 'block';
     map.invalidateSize();
 }
+function showHowToPlay() {
+    document.getElementById('howToPlay').style.display = 'block';
+}
+
+function closeHowToPlay() {
+    document.getElementById('howToPlay').style.display = 'none';
+}        
 </script>
 </body>
 </html>
