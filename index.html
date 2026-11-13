@@ -147,6 +147,31 @@ header,
     </button>
 </div>
 </div>
+    <div id="characterMenu" style="
+    display: none;
+    min-height: 100vh;
+    background: #172b23;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    box-sizing: border-box;
+">
+
+    <h1 style="color: #d6a443;">
+        เลือกตัวละคร
+    </h1>
+
+    <p>เลือกนักสำรวจที่คุณต้องการ</p>
+
+    <button onclick="selectCharacter('male')">
+        ตัวละครชาย
+    </button>
+
+    <button onclick="selectCharacter('female')">
+        ตัวละครหญิง
+    </button>
+
+</div>
 <header>
     <h1>ตามรอยป้อมเมืองสิงหนคร</h1>
     <p>แผนที่ประวัติศาสตร์และบอร์ดเกมเพื่อการเรียนรู้</p>
@@ -320,10 +345,12 @@ createFortMarker(7, 7.2195, 100.5550);
 createFortMarker(8, 7.2202, 100.5552);
    
 
-    // ปุ่มเริ่มเกม
-    function startGame() {
-        alert('ยินดีต้อนรับสู่เกมตามรอยป้อมเมืองสิงหนคร!');
-    }
+   // ปุ่มเริ่มเกม
+function startGame() {
+    document.getElementById('startMenu').style.display = 'none';
+
+    document.getElementById('characterMenu').style.display = 'block';
+}
 </script>
 <!-- Quest System -->
 <style>
@@ -557,16 +584,26 @@ document.getElementById('readHistory')
     this.disabled = true;
 
 });
-        function startGame() {
-
+       // ปุ่มเริ่มเกม
+function startGame() {
     document.getElementById('startMenu').style.display = 'none';
+
+    document.getElementById('characterMenu').style.display = 'block';
+}
+
+// ระบบเลือกตัวละคร
+function selectCharacter(gender) {
+
+    document.getElementById('characterMenu').style.display = 'none';
 
     document.querySelector('header').style.display = 'block';
 
     document.getElementById('map').style.display = 'block';
 
     document.querySelector('.info').style.display = 'block';
-document.querySelector('.quest-panel').style.display = 'block';
+
+    document.querySelector('.quest-panel').style.display = 'block';
+
     map.invalidateSize();
 }
 function showHowToPlay() {
