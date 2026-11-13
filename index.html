@@ -596,12 +596,19 @@ function selectCharacter(gender) {
 
     document.getElementById('characterMenu').style.display = 'none';
 
+    // เปลี่ยนรูปลักษณ์ตัวละคร
+    var characterIcon = gender === 'male' ? '👨🏻' : '👩🏻';
+
+    player.setIcon(L.divIcon({
+        html: '<span style="font-size: 90px; line-height: 1;">' + characterIcon + '</span>',
+        className: 'player-icon',
+        iconSize: [100, 100],
+        iconAnchor: [50, 50]
+    }));
+
     document.querySelector('header').style.display = 'block';
-
     document.getElementById('map').style.display = 'block';
-
     document.querySelector('.info').style.display = 'block';
-
     document.querySelector('.quest-panel').style.display = 'block';
 
     map.invalidateSize();
