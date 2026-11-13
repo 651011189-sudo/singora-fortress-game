@@ -147,31 +147,102 @@ header,
     </button>
 </div>
 </div>
-    <div id="characterMenu" style="
+  
+<div id="characterMenu" style="
     display: none;
     min-height: 100vh;
-    background: #172b23;
+    background: linear-gradient(135deg, #10251d, #294536);
     color: white;
     text-align: center;
-    padding: 30px;
+    padding: 50px 20px;
     box-sizing: border-box;
 ">
 
-    <h1 style="color: #d6a443;">
-        เลือกตัวละคร
+    <h1 style="
+        color: #e5b85c;
+        font-size: 36px;
+        margin-bottom: 10px;
+    ">
+        เลือกนักสำรวจ
     </h1>
 
-    <p>เลือกนักสำรวจที่คุณต้องการ</p>
+    <p style="color: #ddd; font-size: 17px;">
+        เลือกตัวละครเพื่อเริ่มต้นการผจญภัยในเมืองสิงหนคร
+    </p>
 
-    <button onclick="selectCharacter('male')">
-        ตัวละครชาย
-    </button>
+    <div style="
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin-top: 45px;
+    ">
 
-    <button onclick="selectCharacter('female')">
-        ตัวละครหญิง
-    </button>
+        <!-- ตัวละครชาย -->
+        <div style="
+            background: #203b2e;
+            border: 2px solid #c99b45;
+            border-radius: 18px;
+            padding: 25px;
+            width: 190px;
+            box-shadow: 0 5px 15px #0006;
+        ">
+            <div style="font-size: 85px;">👨🏻</div>
 
+            <h2 style="color: #e5b85c;">
+                นักสำรวจชาย
+            </h2>
+
+            <p>พร้อมออกเดินทางสำรวจป้อมโบราณ</p>
+
+            <button onclick="selectCharacter('male')" style="
+                background: #c99b45;
+                color: #17251d;
+                border: none;
+                border-radius: 10px;
+                padding: 12px 25px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+            ">
+                เลือกตัวละคร
+            </button>
+        </div>
+
+        <!-- ตัวละครหญิง -->
+        <div style="
+            background: #203b2e;
+            border: 2px solid #c99b45;
+            border-radius: 18px;
+            padding: 25px;
+            width: 190px;
+            box-shadow: 0 5px 15px #0006;
+        ">
+            <div style="font-size: 85px;">👩🏻</div>
+
+            <h2 style="color: #e5b85c;">
+                นักสำรวจหญิง
+            </h2>
+
+            <p>พร้อมออกเดินทางสำรวจป้อมโบราณ</p>
+
+            <button onclick="selectCharacter('female')" style="
+                background: #c99b45;
+                color: #17251d;
+                border: none;
+                border-radius: 10px;
+                padding: 12px 25px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+            ">
+                เลือกตัวละคร
+            </button>
+        </div>
+
+    </div>
 </div>
+
 <header>
     <h1>ตามรอยป้อมเมืองสิงหนคร</h1>
     <p>แผนที่ประวัติศาสตร์และบอร์ดเกมเพื่อการเรียนรู้</p>
