@@ -675,14 +675,17 @@ function selectCharacter(gender) {
     document.getElementById('characterMenu').style.display = 'none';
 
     // เปลี่ยนรูปลักษณ์ตัวละคร
-    var characterIcon = gender === 'male' ? '👨🏻' : '👩🏻';
+    
+var characterImage = gender === 'male'
+    ? 'explorer-male.png'
+    : 'explorer-female.png';
 
-    player.setIcon(L.divIcon({
-        html: '<span style="font-size: 90px; line-height: 1;">' + characterIcon + '</span>',
-        className: 'player-icon',
-        iconSize: [100, 100],
-        iconAnchor: [50, 50]
-    }));
+player.setIcon(L.divIcon({
+    html: '<img src="' + characterImage + '" style="width:80px;height:100px;object-fit:contain;">',
+    className: 'player-icon',
+    iconSize: [90, 110],
+    iconAnchor: [45, 100]
+}));
 
     document.querySelector('header').style.display = 'block';
     document.getElementById('map').style.display = 'block';
